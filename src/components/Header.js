@@ -5,9 +5,7 @@ import styled from "styled-components";
 export default function Header () {
     return (
         <HeaderWrapper>
-            <Link to={`/`}>
                 <h1>CINEFLEX</h1>
-            </Link>
         </HeaderWrapper>
     )
 }
