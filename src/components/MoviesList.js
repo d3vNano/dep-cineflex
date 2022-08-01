@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function MovieFunc (props) {
+function MovieFunc ({ id, url }) {
     return (
         <Movie>
-            <Link to={`/sessoes/${props.id}`}>
-                <img src={props.url}/>
+            <Link to={`/sessoes/${id}`}>
+                <img src={url} alt="url"/>
             </Link>
         </Movie>
     )
@@ -17,14 +17,14 @@ function MovieFunc (props) {
 function RenderMovies () {
 
     const [movies, setMovies] = useState([]);
-    const { idFilme } = useParams();
 
     useEffect (() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
-
+        
         promise.then(res => {
             setMovies([...res.data])
         })
+        // eslint-disable-next-line
     }, []);
 
     return (
